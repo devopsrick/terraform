@@ -45,3 +45,20 @@ resource "aws_s3_bucket_object" "error_html" {
   # etag = "${md5(file("path/to/file"))}"
   etag = "${filemd5("files/error.html")}"
 }
+
+resource "aws_s3_bucket" "files_devopsrick_com" {
+  bucket = "files.devopsrick.com"
+  acl    = "private"
+
+  versioning {
+    enabled = "true"
+  }
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
+}
