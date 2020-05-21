@@ -6,11 +6,11 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
 
 resource "aws_cloudfront_distribution" "distribution" {
   origin {
-    domain_name = "${aws_s3_bucket.devopsrick_com.bucket_domain_name}"
+    domain_name = aws_s3_bucket.devopsrick_com.bucket_domain_name
     origin_id   = "devopsrick_com"
 
     s3_origin_config {
-      origin_access_identity = "${aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path}"
+      origin_access_identity = aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path
     }
   }
 
@@ -53,7 +53,8 @@ resource "aws_cloudfront_distribution" "distribution" {
   # Use the certificate we imported earlier, and use SNI so that we don't pay for dedicated IPs
 
   viewer_certificate {
-    acm_certificate_arn = "${data.aws_acm_certificate.cert.arn}"
+    acm_certificate_arn = data.aws_acm_certificate.cert.arn
     ssl_support_method  = "sni-only"
   }
 }
+

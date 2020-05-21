@@ -8,4 +8,6 @@ provider "aws" {
 }
 
 # Configure the Terraform Enterprise Provider
-provider "tfe" {}
+provider "tfe" {
+}
+

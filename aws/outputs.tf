@@ -5,3 +5,4 @@ output "devopsrick_com_bucket" {
 output "devopsrick_com_cloudfront" {
   value = aws_cloudfront_distribution.distribution.domain_name
 }
+
