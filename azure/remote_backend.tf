@@ -3,7 +3,7 @@ terraform {
     organization = "DevOpsRick"
 
     workspaces {
-      name = "workspace"
+      name = "azure"
     }
   }
 }
